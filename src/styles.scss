@@ -1,0 +1,329 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+* LINKSEAL APP STYLING - Website View
+*/
+
+.configurator-header {
+  height: 10%;
+  text-align: center;
+  display: block;
+  position: relative;
+  bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-width: 0;
+  background-color: rgb(155, 166, 174);
+}
+
+.configurator-header p {
+  color: white;
+  display: block;
+  font-size: 120%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px
+}
+
+#content_inner p.subtext {
+  width: 80%;
+}
+
+#content_inner p.result-item {
+  padding-bottom: 5px;
+}
+
+#content_inner p.user-input-item {
+  padding-bottom: 10px;
+}
+
+#configurator-view .item-txt p {
+  padding-bottom: 5px;
+  color: #033869;
+  display: block;
+  position: relative;
+  margin-top: 10px;
+  left: 55%;
+  transform: translate(-55%, 0);
+  text-align: center;
+}
+
+.item-txt p {
+  color: #033869;
+  display: block;
+  position: relative;
+  margin-top: 5px;
+  left: 5%;
+}
+
+select {
+  margin-top: 2px;
+  height: 22px;
+  margin-left: 5%;
+  padding-left: 0;
+  width: 90%;
+  font-size: 13px;
+  display: inline-block;
+  text-align: center;
+  text-align-last: center;
+  -ms-text-align-last: center;
+  -moz-text-align-last: center;
+  line-height: 20px;
+  border: 1px solid #033869;
+  border-radius: 4px;
+  margin-bottom: 1px;
+}
+
+select.form-control {
+  padding-left: 31%;
+}
+
+select option {
+  margin-top: 0px;
+  display: block;
+  height: 20px;
+  text-align: center;
+}
+
+input {
+  margin: 2px auto 1px auto;
+
+  height: 22px;
+  padding-left: 0;
+  font-size: 13px;
+  display: inline-block;
+  text-align: center;
+  line-height: 20px;
+  border: 1px solid #033869;
+  border-radius: 4px;
+}
+
+input.form-control {
+  padding-left: 31%;
+}
+
+.item-input {
+  outline-offset: 0;
+  outline-style: none;
+  outline-width: 0;
+  -webkit-font-smoothing: inherit;
+  background-image: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 6px 0 5px 0;
+}
+
+.bottom-button {
+  color: white;
+  cursor: pointer;
+  background-color: #033869;
+  width: 90%;
+  margin-top: 10px;
+  display: block;
+  position: relative;
+  bottom: 0px;
+  height: 25px;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#contact p {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#contact {
+  height: 80%;
+}
+
+.contact-sub-heading {
+  margin-top: 3%;
+  font-weight: bold;
+  font-size: 12px;
+  color: #002e5c;
+  line-height: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#link-seal-view {
+  margin: 50px auto 0 auto;
+  width: 50%;
+}
+
+.linkseal-app {
+  height: inherit;
+}
+
+#configurator-view {
+  height: 650px;
+}
+
+.content-scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 90%;
+  min-height: 320px;
+}
+
+.limiter {
+  margin-top: 4px;
+  font-size: 16px;
+  position: relative;
+  left: -20px;
+  top: 2px;
+  height: 32px;
+  line-height: 24px;
+  border-left: 1px solid #033869;
+}
+
+hr {
+  border-top: 1px solid #033869;
+  border-bottom: none;
+  top: 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+hr.hr-no-style {
+  position: relative;
+  bottom: 5px;
+  border-top: 1px solid #033869;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.hr-top {
+  border-top: 1px solid #033869;
+}
+
+h3, h4, h5 {
+  text-align: center;
+  color: #033869;
+  margin: 10px 0;
+}
+
+h4 {
+  margin-top: 20px;
+}
+
+#results-header {
+  padding: 5px 5%;
+  height: 25%;
+}
+
+#results-header div {
+  display: block;
+  position: relative;
+  float: left;
+  clear: none;
+  color: #033869;
+  margin-bottom: 10px;
+}
+
+.solution {
+  padding: 5px 5%;
+  height: 30%;
+}
+
+.solution div {
+  display: block;
+  position: relative;
+  float: left;
+  clear: none;
+  color: #033869;
+}
+
+.red {
+  color: #3388ee;
+}
+
+.sol-col-1 {
+  width: 100%;
+}
+
+.sol-col-2 {
+  width: 50%;
+}
+
+#result-inputs .ng-binding {
+  color: black !important;
+}
+
+#result-inputs #product-variation .ng-binding {
+  color: #033869 !important;
+}
+
+#info-button {
+  display: inline-block;
+  margin-left: 3px;
+  width: 18px;
+  height: 14px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  background: #2385BA;
+  /* css3 */
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+}
+
+h4.center,
+h5.center {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.centered-text {
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-width: 500px) {
+  /* some CSS here */
+  .configurator-header p {
+    color: white;
+    display: block;
+    font-size: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+  }
+
+  #linkseal {
+    width: 100%;
+  }
+
+}
+
+.sol-col-2:last-child .user-input-item.ng-binding {text-transform: uppercase;}
+.sol-col-2:last-child .user-input-item.ng-binding .ng-scope {text-transform: none;}
+
