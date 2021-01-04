@@ -187,7 +187,7 @@
               </p>
             </div>
             <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item"
+              <p class="result-item outer-diameter-mm"
                  [ngClass]="{red: (isInnerDiameterDeviating(solution) && (isContextPSI() || isContextNeutral()))}">
                 {{solution.adls | number:'.1-1'}} mm
               </p>
@@ -199,7 +199,7 @@
               </p>
             </div>
             <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item"
+              <p class="result-item inner-diameter-mm"
                  [ngClass]="{red: (isOuterDiameterDeviating(solution) && (isContextPSI() || isContextNeutral()))}">
                 {{solution.idls | number:'.1-1'}} mm
               </p>
