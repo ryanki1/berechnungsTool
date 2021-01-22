@@ -1,4 +1,4 @@
-<div id="info-view" class="linkseal-screen" *ngIf="infoViewVisible">
+<div id="info-view" class="linkseal-screen">
   <img *ngIf="i18n.preferredLanguage == 'de'" class="info-image"
        src="//psi-products.de/fileadmin/templates/extensions/linkseal_js/info_image-de.png" alt=""
        style="width: 100%;">
@@ -6,7 +6,9 @@
        src="//psi-products.de/fileadmin/templates/extensions/linkseal_js/info_image-en.png" alt=""
        style="width: 100%;">
   <hr class="hr-no-style">
-  <button [textContent]="translate('BUTTON_CLOSE_INFO')" id="close-info" class="bottom-button"
-          ng-click="showConfigurator()">
+  <button [textContent]="translate('BUTTON_CLOSE_INFO')"
+          id="close-info"
+          class="bottom-button"
+          (click)="showConfigurator()">
   </button>
 </div>

@@ -4,9 +4,19 @@
             class="button icon ion-home"
             (click)="backToMenu()">
     </button>
-    <p class="subtext">LINK-SEAL<sup>&reg;</sup>- <span translate="CALC_TOOL"></span></p>
-    <p ng-show="isRunningOnWebsite()" translate="DESCRIPTION_SHORT" class="subtext"></p>
+    <p class="subtext">LINK-SEAL<sup>&reg;</sup>- <span [textContent]='translate("CALC_TOOL")'></span></p>
+    <p *ngIf="isRunningOnWebsite()" [textContent]='translate("DESCRIPTION_SHORT")' class="subtext"></p>
   </div>
-  <app-results *ngIf="!!resultViewVisible"></app-results>
-  <app-info-view *ngIf="!!infoViewVisible"></app-info-view>
+  <app-configurator-view *ngIf="!!configuratorViewVisible"
+                         (displayResult)="showResult()"
+                         [(resultForConfiguration)]="resultForConfiguration"
+                         class="linkseal-screen">
+  </app-configurator-view>
+  <app-results *ngIf="!!resultViewVisible"
+               [configurationResults]="resultForConfiguration"
+              (showConfiguration)="showConfigurator()">
+  </app-results>
+  <app-info-view *ngIf="!!infoViewVisible"
+                (displayConfigurator)="showConfigurator()">
+  </app-info-view>
 </div>

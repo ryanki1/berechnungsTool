@@ -1,0 +1,163 @@
+<div id="configurator-view"
+     class="linkseal-screen"
+     (submit)="calculate()">
+  <div class="content-scrollable" delegate-handle="small">
+
+    <!--------------------------->
+    <!-- WALL SLEEVE Selection -->
+    <!--------------------------->
+    <div class="item-txt" id="wall-sleeve-pane-website">
+      <p>
+        <span [textContent]="translate('WALL_SLEEVE_DRILLING')"></span>
+        <span id="info-button" (click)="showInfo()">?</span>
+      </p>
+
+      <!-- Änderung PuS-2020
+      <select name="wallSleeveTypeSelection" id="wall-sleeve-type-selection"
+              ng-show="isRunningOnWebsite()"
+              ng-model="selectedWallSleeveTypeIdentifier"
+              ng-change="onWallSleeveTypeChange()">
+        <option ng-repeat="type in wallSleeveTypes"
+                ng-selected="selectedWallSleeveTypeIdentifier === type.identifier"
+                value="{{type.identifier}}" translate="{{type.identifier}}"></option>
+      </select>
+
+      <span class="limiter"></span>
+      -->
+    </div>
+
+    <div class="item-txt" id="inner-diameter-pane-website">
+      <p>
+        <span [textContent]="translate('INNER_DIAMETER')"></span>
+        <!-- Änderung PuS-2020
+        <span ng-show="isRunningOnWebsite()" translate="{{selectedWallSleeveTypeIdentifier}}"></span>
+        -->
+        in mm
+      </p>
+      <select class="item-select" name="innerDiameter" id="inner-diameter-selection"
+              *ngIf="!(isSelectedWallSleeveTypeOther())"
+              [(ngModel)]="selectedWallSleeveSize"
+              (change)="onWallSleeveSizeChange()">
+        <option *ngFor="let size in wallSleeveSizes"
+                [selected]="selectedWallSleeveSize === size"
+                value="{{size}}">{{size}}
+        </option>
+      </select>
+      <input class="item-input" name="innerDiameterInput" id="inner-diameter-input" tabindex=1 autofocus
+             *ngIf="isSelectedWallSleeveTypeOther()"
+             [(ngModel)]="inputWallSleeveSize"
+             (change)="onWallSleeveSizeChange()">
+      <span class="limiter"></span>
+    </div>
+
+    <hr>
+
+
+    <!---------------------------->
+    <!-- CARRIER PIPE Selection -->
+    <!---------------------------->
+    <div class="item-txt" id="carrier-pipe-pane-website">
+      <p [textContent]="translate('CARRIER_PIPE')"></p>
+
+      <!-- Änderung PuS-2020
+      <select name="carrierPipeTypeSelection" id="carrier-pipe-type-selection"
+              ng-show="isRunningOnWebsite()"
+              ng-model="selectedCarrierPipeTypeIdentifier"
+              ng-change="onCarrierPipeTypeChange()">
+        <option ng-repeat="type in carrierPipeTypes"
+                ng-selected="selectedCarrierPipeTypeIdentifier === type.identifier"
+                value="{{type.identifier}}" translate="{{type.identifier}}"></option>
+      </select>
+      <span class="limiter"></span>
+      -->
+    </div>
+
+    <div class="item-txt" id="outer-diameter-pane-website">
+      <p>
+        <span [textContent]="translate('OUTER_DIAMETER')"></span>
+        <!-- Änderung PuS-2020
+        <span ng-show="isRunningOnWebsite()" translate="{{selectedCarrierPipeTypeIdentifier}}"></span>
+        -->
+        in mm
+      </p>
+      <select class="item-select" name="outerDiameter" id="outer-diameter-selection"
+              *ngIf="!(isSelectedCarrierPipeTypeOther())"
+              [(ngModel)]="selectedCarrierPipeSize"
+              (change)="onCarrierPipeSizeChange()">
+        <option *ngFor="let size of carrierPipeSizes"
+                [selected]="selectedCarrierPipeSize === size"
+                value="{{size}}">{{size}}
+        </option>
+      </select>
+      <input class="item-input" name="outerDiameterInput" id="outer-diameter-input" tabindex=2
+             *ngIf="isSelectedCarrierPipeTypeOther()"
+             [(ngModel)]="inputCarrierPipeSize"
+             (change)="onCarrierPipeSizeChange()">
+      <span class="limiter"></span>
+    </div>
+
+    <hr>
+
+
+    <!---------------------------------------------->
+    <!-- PRODUCT / MATERIAL / SCREW TYPE Selection for WEBSITE & APP -->
+    <!---------------------------------------------->
+    <div class="item-txt" id="product-pane">
+      <p>
+        <span [textContent]="translate('PRODUCT')"></span>
+      </p>
+      <select class="item-select" name="productType" id="product-selection"
+              [(ngModel)]="selectedProductTypeIdentifier"
+              (change)="onProductTypeChange()">
+        <option *ngFor="let type of productTypes"
+                [selected]="selectedProductTypeIdentifier === type.identifier"
+                value="{{type.identifier}}">
+          {{ translate(type.identifier) }}"
+        </option>
+      </select>
+      <span class="limiter"></span>
+    </div>
+
+    <div class="item-txt" id="material-pane">
+      <p><span [textContent]="translate('MATERIAL')"></span></p>
+      <select class="item-select" name="materialType" id="material-selection"
+              [(ngModel)]="selectedMaterialTypeIdentifier"
+              (change)="onMaterialTypeChange()">
+        <option *ngFor="let type of materialTypes"
+                [selected]="selectedMaterialTypeIdentifier === type.identifier"
+                value="{{type.identifier}}">
+          {{ translate(type.identifier) }}"
+        </option>
+      </select>
+      <span class="limiter"></span>
+    </div>
+
+    <div class="item-txt" id="screw-pane">
+      <p><span [textContent]="translate('SCREW')"></span></p>
+      <select class="item-select" name="screwType" id="screw-selection"
+              [(ngModel)]="selectedScrewTypeIdentifier"
+              (change)="onScrewTypeChange()">
+        <option *ngFor="let type of screwTypes"
+                [selected]="selectedScrewTypeIdentifier === type.identifier"
+                value="{{type.identifier}}">
+          {{ translate(type.identifier) }}"
+        </option>
+      </select>
+      <span class="limiter"></span>
+    </div>
+
+  </div>
+
+  <hr class="hr-no-style">
+
+  <div id="compute">
+    <button id="check-input"
+            class="bottom-button"
+            tabindex=3
+            type="submit"
+            [disabled]="isCalculateButtonDisabled()"
+            (click)="calculate()">
+      {{ translate('BUTTON_CHECK_INPUT') }}
+    </button>
+  </div>
+</div>

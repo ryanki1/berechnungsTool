@@ -1,6 +1,7 @@
-<div id="result-view" class="linkseal-screen" *ngIf="resultViewVisible">
+<div id="result-view" class="linkseal-screen">
     <div class="content-scrollable">
-      <div id="results-header" *ngIf="hasResultSolutions()">
+      <div *ngIf="hasResultSolutions()"
+        id="results-header">
         <div class="sol-col-1">
           <h4 [textContent]="translate('YOUR_INPUT')" class="center"></h4>
         </div>
@@ -55,8 +56,9 @@
         <div class="sol-col-1">
           <h5 class="center" [textContent]="translate('RESULTS')"></h5>
         </div>
-        <div class="solution" *ngFor="let set of resultForConfiguration.sets">
-          <div *ngIf="hasResultSets()">
+        <div *ngIf="hasResultSets()"
+             class="solution">
+          <div *ngFor="let set of resultForConfiguration.sets">
 
             <div class="sol-col-2">
               <p class="result-item">
@@ -124,10 +126,16 @@
             <div class="sol-col-1 hr-top">&nbsp;</div>
           </div>
         </div>
-        <div class="solution" *ngFor="let solution of resultForConfiguration.solutions">
-          <div *ngIf="hasResultSolutions()">
+        <div *ngIf="hasResultSolutions()"
+             class="solution">
+          <div *ngFor="let solution of resultForConfiguration.solutions">
 
-            <div class="sol-col-2"><p class="result-item"><span [textContent]="translate('TYPE')"></span>:</p></div>
+            <div class="sol-col-2">
+              <p class="result-item">
+              <span [textContent]="translate('TYPE')"></span>
+                :
+              </p>
+            </div>
             <div class="sol-col-2"><p class="result-item">{{solution.type}}</p></div>
 
             <div class="sol-col-2">
@@ -253,12 +261,12 @@
     <button [textContent]="translate('BUTTON_BACK')"
             id="back"
             class="bottom-button"
-            ng-click="back()">
+            (click)="back()">
     </button>
     <button [textContent]="translate('BUTTON_NEW_CONFIGURATION')"
             id="new-configuration"
             class="bottom-button"
-            ng-click="newConfiguration()">
+            (click)="newConfiguration()">
     </button>
   </div>
 
