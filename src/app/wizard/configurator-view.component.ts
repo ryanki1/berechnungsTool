@@ -7,13 +7,13 @@ import {Base} from '../common/base';
 
 @Component({
   selector: 'app-configurator-view',
-  templateUrl: './configurator-view.component.html',
-  styleUrls: ['./configurator-view.component.css']
+  templateUrl: './configurator-view.component.html'
 })
 export class ConfiguratorViewComponent extends Base implements OnInit {
 
   @Input() resultForConfiguration: any;
   @Output() resultForConfigurationChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() displayInfo: EventEmitter<void> = new EventEmitter<void>();
   @Output() displayResult: EventEmitter<void> = new EventEmitter<void>();
 
   /**
@@ -186,6 +186,9 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
 
   ngOnInit(): void {
     this.initLinkSealApp();
+    if (!!this.linkSealService.configuratorInputs) {
+      this.applyAllSelections();
+    }
   }
 
   /**
@@ -196,19 +199,57 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.selectedWallSleeveSize = null;
     this.inputWallSleeveSize = '';
   }
+  applyWallSleeveSizeSelection(): void {
+    if (this.linkSealService.configuratorInputs &&
+      this.linkSealService
+        .configuratorInputs
+        .wallSleeveSizeSelection) {
+      this.wallSleeveSizes = this.linkSealService
+        .configuratorInputs
+        .wallSleeveSizeSelection
+        .wallSleeveSizes;
+      this.selectedWallSleeveSize = this.linkSealService
+        .configuratorInputs
+        .wallSleeveSizeSelection
+        .selectedWallSleeveSize;
+      this.inputWallSleeveSize = this.linkSealService
+        .configuratorInputs
+        .wallSleeveSizeSelection
+        .inputWallSleeveSize;
+    }
+  }
 
   /**
    * resets the wall sleeve type selection
    */
   resetWallSleeveTypeSelection(): void {
-    this.selectedWallSleeveTypeIdentifier = null;
+    this.selectedWallSleeveTypeIdentifier = 'WALL_SLEEVE_TYPE_OTHER';
+  }
+  applyWallSleeveTypeSelection(): void {
+    if (this.linkSealService.configuratorInputs.wallSleeveTypeSelection) {
+      this.selectedWallSleeveTypeIdentifier = this.linkSealService
+        .configuratorInputs
+        .wallSleeveTypeSelection
+        .selectedWallSleeveTypeIdentifier;
+    }
   }
 
   /**
    * resets the carrier pipe type selection
    */
   resetCarrierPipeTypeSelection(): void {
-    this.selectedCarrierPipeTypeIdentifier = null;
+    this.selectedCarrierPipeTypeIdentifier = 'CARRIER_PIPE_TYPE_OTHER';
+  }
+  applyCarrierPipeTypeSelection(): void {
+    if (this.linkSealService
+        .configuratorInputs
+        .carrierPipeTypeSelection
+    ) {
+      this.selectedCarrierPipeTypeIdentifier = this.linkSealService
+        .configuratorInputs
+        .carrierPipeTypeSelection
+        .selectedCarrierPipeTypeIdentifier;
+    }
   }
 
   /**
@@ -219,6 +260,24 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.selectedCarrierPipeSize = null;
     this.inputCarrierPipeSize = '';
   }
+  applyCarrierPipeSizeSelection(): void {
+    if (this.linkSealService
+        .configuratorInputs
+        .carrierPipeSizeSelection) {
+      this.carrierPipeSizes = this.linkSealService
+        .configuratorInputs
+        .carrierPipeSizeSelection
+        .carrierPipeSizes;
+      this.selectedCarrierPipeSize = this.linkSealService
+        .configuratorInputs
+        .carrierPipeSizeSelection
+        .selectedCarrierPipeSize;
+      this.inputCarrierPipeSize = this.linkSealService
+        .configuratorInputs
+        .carrierPipeSizeSelection
+        .inputCarrierPipeSize;
+    }
+  }
 
   /**
    * resets the material type selection
@@ -227,12 +286,36 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.materialTypes = [];
     this.selectedMaterialTypeIdentifier = null;
   }
+  applyMaterialTypeSelection(): void {
+    if (this.linkSealService
+        .configuratorInputs
+        .materialTypeSelection) {
+      this.materialTypes = this.linkSealService
+        .configuratorInputs
+        .materialTypeSelection
+        .materialTypes;
+      this.selectedMaterialTypeIdentifier = this.linkSealService
+        .configuratorInputs
+        .materialTypeSelection
+        .selectedMaterialTypeIdentifier;
+    }
+  }
 
   /**
    * resets the product type selection
    */
   resetProductTypeSelection(): void {
     this.selectedProductTypeIdentifier = null;
+  }
+  applyProductTypeSelection(): void {
+    if (this.linkSealService
+        .configuratorInputs
+        .productTypeSelection) {
+      this.selectedProductTypeIdentifier = this.linkSealService
+        .configuratorInputs
+        .productTypeSelection
+        .selectedProductTypeIdentifier;
+    }
   }
 
   /**
@@ -241,6 +324,20 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   resetScrewTypeSelection(): void {
     this.screwTypes = [];
     this.selectedScrewTypeIdentifier = null;
+  }
+  applyScrewTypeSelection(): void {
+    if (this.linkSealService
+        .configuratorInputs
+        .screwTypeSelection) {
+      this.screwTypes = this.linkSealService
+        .configuratorInputs
+        .screwTypeSelection
+        .screwTypes;
+      this.selectedScrewTypeIdentifier = this.linkSealService
+        .configuratorInputs
+        .screwTypeSelection
+        .selectedScrewTypeIdentifier;
+    }
   }
 
   /**
@@ -497,6 +594,47 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.resetMaterialTypeSelection();
     this.resetScrewTypeSelection();
   }
+  applyAllSelections(): void {
+    this.applyWallSleeveTypeSelection();
+    this.applyWallSleeveSizeSelection();
+    this.applyCarrierPipeTypeSelection();
+    this.applyCarrierPipeSizeSelection();
+    this.applyProductTypeSelection();
+    this.applyMaterialTypeSelection();
+    this.applyScrewTypeSelection();
+  }
+
+  saveInputs(): void {
+    this.linkSealService.configuratorInputs = {
+      wallSleeveSizeSelection: {
+        wallSleeveSizes: this.wallSleeveSizes,
+        selectedWallSleeveSize: this.selectedWallSleeveSize,
+        inputWallSleeveSize: this.inputWallSleeveSize
+      },
+      wallSleeveTypeSelection: {
+        selectedWallSleeveTypeIdentifier: this.selectedWallSleeveTypeIdentifier
+      },
+      carrierPipeTypeSelection: {
+        selectedCarrierPipeTypeIdentifier: this.selectedCarrierPipeTypeIdentifier
+      },
+      carrierPipeSizeSelection: {
+        carrierPipeSizes: this.carrierPipeSizes,
+        selectedCarrierPipeSize: this.selectedCarrierPipeSize,
+        inputCarrierPipeSize: this.inputCarrierPipeSize
+      },
+      materialTypeSelection: {
+        materialTypes: this.materialTypes,
+        selectedMaterialTypeIdentifier: this.selectedMaterialTypeIdentifier
+      },
+      productTypeSelection: {
+        selectedProductTypeIdentifier: this.selectedProductTypeIdentifier
+      },
+      screwTypeSelection: {
+        screwTypes: this.screwTypes,
+        selectedScrewTypeIdentifier: this.selectedScrewTypeIdentifier
+      }
+    };
+  }
 
   /**
    * ----------------------------------------------
@@ -546,8 +684,6 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.productTypes = LinkSealModel.productTypes;
 
     // set defaults for all types
-    this.selectedWallSleeveTypeIdentifier = 'WALL_SLEEVE_TYPE_OTHER';
-    this.selectedCarrierPipeTypeIdentifier = 'CARRIER_PIPE_TYPE_OTHER';
 
     this.selectedProductTypeIdentifier = this.productTypes[0].identifier;
     this.productTypes.forEach(product => {
@@ -566,9 +702,6 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     // uncomment the following line for preselection
     this.selectedMaterialTypeIdentifier = this.materialTypes[0].identifier;
     this.selectedScrewTypeIdentifier = this.screwTypes[0].identifier;
-
-    // show configurator
-    this.showConfigurator(); // TODO KR Work out where this goes app.component.ts?
 
     // init for environment configuration - can override the default states
     if (this.isRunningInApp()) {
@@ -615,11 +748,16 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     return false;
   }
 
+
   /**
-   * -----------------------------------------------------------
-   * HANDLER FOR CALCULATION CLICK
-   * -----------------------------------------------------------
+   * ----------------------------------------------
+   * Page click actions e.g. button, link
+   * ----------------------------------------------
    */
+
+  showInfo(): void {
+    this.displayInfo.emit();
+  }
 
   /**
    * Calculates the solutions for a given configuration by asking the corresponding service.
@@ -627,6 +765,9 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
    */
   calculate(): void {
     if (!this.isCalculateButtonDisabled()) {
+
+      this.saveInputs();
+
       let wallSleeveSize = this.inputWallSleeveSize;
       let carrierPipeSize = this.inputCarrierPipeSize;
 
@@ -666,15 +807,15 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
             this.resultForConfiguration = {};
             this.resultForConfiguration.error = 'ERROR_DEFAULT';
           } else {
-              this.resultForConfiguration = {...data};
-              this.resultForConfigurationChange.emit(this.resultForConfiguration);
-              this.addFootnotesToResult();
+            this.resultForConfiguration = {...data};
+            this.resultForConfigurationChange.emit(this.resultForConfiguration);
+            this.addFootnotesToResult();
           }
           this.displayResult.emit();
         }, (error) => {
           console.log('failed loading result for configuration');
           this.displayResult.emit();
-      });
+        });
     }
   }
 

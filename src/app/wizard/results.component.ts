@@ -1,7 +1,9 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Location} from '@angular/common';
 
 import {AppEnvironment} from '../../assets/model';
 import {Base} from '../common/base';
+import {LinkSealService} from '../service/linkSeal.service';
 
 @Component({
   selector: 'app-results',
@@ -15,9 +17,11 @@ export class ResultsComponent extends Base implements OnInit {
     this.resultForConfiguration = result;
   }
 
-  @Output() showConfiguration: EventEmitter<void> = new EventEmitter<void>();
+  @Output() displayConfigurator: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(protected cd: ChangeDetectorRef) {
+  constructor(protected cd: ChangeDetectorRef,
+              private location: Location,
+              private linkSealService: LinkSealService) {
     super();
   }
 
@@ -126,11 +130,12 @@ export class ResultsComponent extends Base implements OnInit {
   }
 
   back(): void {
-    this.showConfiguration.emit();
+    this.displayConfigurator.emit();
   }
 
-  newConfiguration(): void {
-    this.showConfiguration.emit();
+  showConfigurator(): void {
+    this.linkSealService.configuratorInputs = null;
+    this.displayConfigurator.emit();
   }
 
 }

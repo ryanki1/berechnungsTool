@@ -9,9 +9,9 @@ export class Base {
    * @type {Array}
    */
   resultForConfiguration = null;
-  configuratorViewVisible = false;
+  configuratorViewVisible = true;
   resultViewVisible = false;
-  infoViewVisible = true;
+  infoViewVisible = false;
 
   constructor() {
   }

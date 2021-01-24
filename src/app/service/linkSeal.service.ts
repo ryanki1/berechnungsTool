@@ -8,6 +8,9 @@ import {Constants} from '../common/constants';
   providedIn: 'root'
 })
 export class LinkSealService {
+
+  private inputs: any;
+
   getResults(context: string,
              wallSleeveTypeIdentifier: string,
              wallSleeveSize: string,
@@ -72,5 +75,11 @@ export class LinkSealService {
     else {
       // TODO KR async http getResults call
     }
+  }
+  get configuratorInputs(): any {
+    return this.inputs;
+  }
+  set configuratorInputs(value: any) {
+    this.inputs = value;
   }
 }

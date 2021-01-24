@@ -8,13 +8,14 @@
     <p *ngIf="isRunningOnWebsite()" [textContent]='translate("DESCRIPTION_SHORT")' class="subtext"></p>
   </div>
   <app-configurator-view *ngIf="!!configuratorViewVisible"
+                         (displayInfo)="showInfo()"
                          (displayResult)="showResult()"
                          [(resultForConfiguration)]="resultForConfiguration"
                          class="linkseal-screen">
   </app-configurator-view>
   <app-results *ngIf="!!resultViewVisible"
                [configurationResults]="resultForConfiguration"
-              (showConfiguration)="showConfigurator()">
+               (displayConfigurator)="showConfigurator()">
   </app-results>
   <app-info-view *ngIf="!!infoViewVisible"
                 (displayConfigurator)="showConfigurator()">
