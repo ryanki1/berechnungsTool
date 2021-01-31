@@ -1,8 +1,11 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
 import {NgModule} from '@angular/core';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
+import {ButtonConfiguratorComponent} from './common/widget/button-configurator.component';
 import {ConfiguratorViewComponent} from './wizard/configurator-view.component';
 import {InfoViewComponent} from './wizard/info-view.component';
 import {ResultsComponent} from './wizard/results.component';
@@ -12,11 +15,14 @@ import {ResultsComponent} from './wizard/results.component';
     AppComponent,
     ResultsComponent,
     InfoViewComponent,
-    ConfiguratorViewComponent
+    ConfiguratorViewComponent,
+    ButtonConfiguratorComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

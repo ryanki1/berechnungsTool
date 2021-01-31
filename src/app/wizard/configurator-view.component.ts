@@ -242,8 +242,8 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   }
   applyCarrierPipeTypeSelection(): void {
     if (this.linkSealService
-        .configuratorInputs
-        .carrierPipeTypeSelection
+      .configuratorInputs
+      .carrierPipeTypeSelection
     ) {
       this.selectedCarrierPipeTypeIdentifier = this.linkSealService
         .configuratorInputs
@@ -262,8 +262,8 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   }
   applyCarrierPipeSizeSelection(): void {
     if (this.linkSealService
-        .configuratorInputs
-        .carrierPipeSizeSelection) {
+      .configuratorInputs
+      .carrierPipeSizeSelection) {
       this.carrierPipeSizes = this.linkSealService
         .configuratorInputs
         .carrierPipeSizeSelection
@@ -288,8 +288,8 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   }
   applyMaterialTypeSelection(): void {
     if (this.linkSealService
-        .configuratorInputs
-        .materialTypeSelection) {
+      .configuratorInputs
+      .materialTypeSelection) {
       this.materialTypes = this.linkSealService
         .configuratorInputs
         .materialTypeSelection
@@ -309,8 +309,8 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   }
   applyProductTypeSelection(): void {
     if (this.linkSealService
-        .configuratorInputs
-        .productTypeSelection) {
+      .configuratorInputs
+      .productTypeSelection) {
       this.selectedProductTypeIdentifier = this.linkSealService
         .configuratorInputs
         .productTypeSelection
@@ -327,8 +327,8 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   }
   applyScrewTypeSelection(): void {
     if (this.linkSealService
-        .configuratorInputs
-        .screwTypeSelection) {
+      .configuratorInputs
+      .screwTypeSelection) {
       this.screwTypes = this.linkSealService
         .configuratorInputs
         .screwTypeSelection
@@ -654,7 +654,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
    */
   initOnWebsite(): void {
     // uncomment the following line for preselection of wall sleeve type
-    // $scope.selectedWallSleeveTypeIdentifier = $scope.wallSleeveTypes[0].identifier;
+    // this.selectedWallSleeveTypeIdentifier = this.wallSleeveTypes[0].identifier;
   }
 
   /**
@@ -723,22 +723,22 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   isCalculateButtonDisabled(): boolean {
     if (
       (this.selectedWallSleeveTypeIdentifier === 'WALL_SLEEVE_TYPE_OTHER') &&
-      (this.inputWallSleeveSize === '')
+      (!this.inputWallSleeveSize)
     ) {
       // wall sleeve type other and size empty
       return true;
     } else if (
       (this.selectedCarrierPipeTypeIdentifier === 'CARRIER_PIPE_TYPE_OTHER') &&
-      (this.inputCarrierPipeSize === '')
+      (!this.inputCarrierPipeSize)
     ) {
       // carrier pipe type other and size empty
       return true;
     } else if (
-      (this.selectedWallSleeveTypeIdentifier === '') ||
-      (this.selectedCarrierPipeTypeIdentifier === '') ||
-      (this.selectedProductTypeIdentifier === '') ||
-      (this.selectedMaterialTypeIdentifier === '') ||
-      (this.selectedScrewTypeIdentifier === '')
+      (!this.selectedWallSleeveTypeIdentifier) ||
+      (!this.selectedCarrierPipeTypeIdentifier) ||
+      (!this.selectedProductTypeIdentifier) ||
+      (!this.selectedMaterialTypeIdentifier) ||
+      (!this.selectedScrewTypeIdentifier)
     ) {
       // mandatory fields not filled out
       return true;
@@ -759,11 +759,22 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.displayInfo.emit();
   }
 
+  selectionMade(selections: {
+    productType: string,
+    materialType: string,
+    screwType: string
+  }): void {
+    this.selectedProductTypeIdentifier = selections.productType;
+    this.selectedMaterialTypeIdentifier = selections.materialType;
+    this.selectedScrewTypeIdentifier = selections.screwType;
+  }
+
   /**
    * Calculates the solutions for a given configuration by asking the corresponding service.
    * Therefore differentiates between website and app context
    */
   calculate(): void {
+    // TODO KR Confirm contexts Rf and TVG still work with dropdowns
     if (!this.isCalculateButtonDisabled()) {
 
       this.saveInputs();

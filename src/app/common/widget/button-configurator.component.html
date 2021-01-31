@@ -1,0 +1,53 @@
+<section class="buttonConfigurator">
+  <div class="identitfier row" *ngFor="let productType of linkSealModel.productTypes">
+    <button *ngIf="productType.button === 'flat'"
+            mat-flat-button
+            (click)="raise(productType)">
+      {{ translate(productType.identifier)}}
+    </button>
+    <button *ngIf="productType.button === 'stroked'" mat-stroked-button>
+      {{ translate(productType.identifier)}}
+    </button>
+    <button *ngIf="productType.button === 'raised'"
+            mat-raised-button
+            (click)="flatten(productType)">
+      {{ translate(productType.identifier)}}
+    </button>
+    <div class="material-types row button-container">
+      <div *ngFor="let materialType of productType.materialTypes">
+        <button *ngIf="materialType.button === 'flat'"
+                mat-flat-button
+                (click)="raiseMaterial(productType, materialType)">
+          {{ translate(materialType.identifier) }}
+        </button>
+        <button *ngIf="materialType.button === 'stroked'"
+                mat-stroked-button>
+          {{ translate(materialType.identifier) }}
+        </button>
+        <button *ngIf="materialType.button === 'raised'"
+                mat-raised-button
+                (click)="flattenMaterial(productType, materialType)">
+          {{ translate(materialType.identifier) }}
+        </button>
+      </div>
+    </div>
+    <div class="screw-types row button-container">
+      <div *ngFor="let screwType of productType.screwTypes">
+        <button *ngIf="screwType.button === 'flat'"
+                mat-flat-button
+                (click)="raiseScrew(productType, screwType)">
+          {{ translate(screwType.identifier) }}
+        </button>
+        <button *ngIf="screwType.button === 'stroked'" mat-stroked-button>
+          {{ translate(screwType.identifier) }}
+        </button>
+        <button *ngIf="screwType.button === 'raised'"
+                mat-raised-button
+                (click)="flattenScrew(productType, screwType)">
+          {{ translate(screwType.identifier) }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>

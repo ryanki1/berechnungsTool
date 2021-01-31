@@ -582,36 +582,45 @@ export const LinkSealModel = {
   productTypes: [
     {
       identifier: 'PRODUCT_LINK_SEAL',
+      button: 'flat',
       materialTypes: [
         {
-          identifier: 'MATERIAL_EPDM_BLACK'
+          identifier: 'MATERIAL_EPDM_BLACK',
+          button: 'flat'
         },
         {
-          identifier: 'MATERIAL_EPDM_BLUE'
+          identifier: 'MATERIAL_EPDM_BLUE',
+          button: 'stroked'
         },
         {
-          identifier: 'MATERIAL_NBR_GREEN'
+          identifier: 'MATERIAL_NBR_GREEN',
+          button: 'stroked'
         }
       ],
       screwTypes: [
         {
-          identifier: 'SCREW_STAINLESS_STEEL'
+          identifier: 'SCREW_STAINLESS_STEEL',
+          button: 'stroked'
         },
         {
-          identifier: 'SCREW_ZINC_PLATED'
+          identifier: 'SCREW_ZINC_PLATED',
+          button: 'flat'
         }
       ]
     },
     {
       identifier: 'PRODUCT_LINK_SEAL_DRINKING_WATER',
+      button: 'stroked',
       materialTypes: [
         {
-          identifier: 'MATERIAL_EPDM_BLACK'
+          identifier: 'MATERIAL_EPDM_BLACK',
+          button: 'stroked'
         }
       ],
       screwTypes: [
         {
-          identifier: 'SCREW_STAINLESS_STEEL'
+          identifier: 'SCREW_STAINLESS_STEEL',
+          button: 'stroked'
         }
       ]
     }]

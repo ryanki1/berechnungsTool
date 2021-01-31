@@ -98,53 +98,62 @@
 
     <hr>
 
+    <!---------------------------------------------->
+    <!-- PRODUCT / MATERIAL / SCREW TYPE Selection for WEBSITE & APP using ButtonConfigurator -->
+    <!---------------------------------------------->
+    <app-button-configurator *ngIf="isContextPSI() || isContextNeutral()"
+      (selectionMade)="selectionMade($event)">
+    </app-button-configurator>
 
     <!---------------------------------------------->
     <!-- PRODUCT / MATERIAL / SCREW TYPE Selection for WEBSITE & APP -->
     <!---------------------------------------------->
-    <div class="item-txt" id="product-pane">
-      <p>
-        <span [textContent]="translate('PRODUCT')"></span>
-      </p>
-      <select class="item-select" name="productType" id="product-selection"
-              [(ngModel)]="selectedProductTypeIdentifier"
-              (change)="onProductTypeChange()">
-        <option *ngFor="let type of productTypes"
-                [selected]="selectedProductTypeIdentifier === type.identifier"
-                value="{{type.identifier}}">
-          {{ translate(type.identifier) }}"
-        </option>
-      </select>
-      <span class="limiter"></span>
+    <div *ngIf="isContextRf() || isContextTVG()">
+      <div class="item-txt" id="product-pane">
+        <p>
+          <span [textContent]="translate('PRODUCT')"></span>
+        </p>
+        <select class="item-select" name="productType" id="product-selection"
+                [(ngModel)]="selectedProductTypeIdentifier"
+                (change)="onProductTypeChange()">
+          <option *ngFor="let type of productTypes"
+                  [selected]="selectedProductTypeIdentifier === type.identifier"
+                  value="{{type.identifier}}">
+            {{ translate(type.identifier) }}"
+          </option>
+        </select>
+        <span class="limiter"></span>
+      </div>
+
+      <div class="item-txt" id="material-pane">
+        <p><span [textContent]="translate('MATERIAL')"></span></p>
+        <select class="item-select" name="materialType" id="material-selection"
+                [(ngModel)]="selectedMaterialTypeIdentifier"
+                (change)="onMaterialTypeChange()">
+          <option *ngFor="let type of materialTypes"
+                  [selected]="selectedMaterialTypeIdentifier === type.identifier"
+                  value="{{type.identifier}}">
+            {{ translate(type.identifier) }}"
+          </option>
+        </select>
+        <span class="limiter"></span>
+      </div>
+
+      <div class="item-txt" id="screw-pane">
+        <p><span [textContent]="translate('SCREW')"></span></p>
+        <select class="item-select" name="screwType" id="screw-selection"
+                [(ngModel)]="selectedScrewTypeIdentifier"
+                (change)="onScrewTypeChange()">
+          <option *ngFor="let type of screwTypes"
+                  [selected]="selectedScrewTypeIdentifier === type.identifier"
+                  value="{{type.identifier}}">
+            {{ translate(type.identifier) }}"
+          </option>
+        </select>
+        <span class="limiter"></span>
+      </div>
     </div>
 
-    <div class="item-txt" id="material-pane">
-      <p><span [textContent]="translate('MATERIAL')"></span></p>
-      <select class="item-select" name="materialType" id="material-selection"
-              [(ngModel)]="selectedMaterialTypeIdentifier"
-              (change)="onMaterialTypeChange()">
-        <option *ngFor="let type of materialTypes"
-                [selected]="selectedMaterialTypeIdentifier === type.identifier"
-                value="{{type.identifier}}">
-          {{ translate(type.identifier) }}"
-        </option>
-      </select>
-      <span class="limiter"></span>
-    </div>
-
-    <div class="item-txt" id="screw-pane">
-      <p><span [textContent]="translate('SCREW')"></span></p>
-      <select class="item-select" name="screwType" id="screw-selection"
-              [(ngModel)]="selectedScrewTypeIdentifier"
-              (change)="onScrewTypeChange()">
-        <option *ngFor="let type of screwTypes"
-                [selected]="selectedScrewTypeIdentifier === type.identifier"
-                value="{{type.identifier}}">
-          {{ translate(type.identifier) }}"
-        </option>
-      </select>
-      <span class="limiter"></span>
-    </div>
 
   </div>
 

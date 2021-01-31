@@ -1,0 +1,21 @@
+section {
+  display: table;
+  width: 100%;
+  .row {
+    margin: 10px 0;
+    button {
+      display: flex;
+      &[mat-flat-button] {
+        background-color: lightblue;
+      }
+      &[mat-raised-button] {
+        background-color: aliceblue;
+      }
+    }
+  }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
