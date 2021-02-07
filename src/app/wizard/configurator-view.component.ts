@@ -828,7 +828,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
             this.resultForConfiguration = {};
             this.resultForConfiguration.error = 'ERROR_DEFAULT';
           } else {
-            this.resultForConfiguration = {...this.resultForConfiguration,
+            this.resultForConfiguration = {...data,
               // TODO KR chartType info should be coming from backend
               solutions: _.map(data.solutions, (solution) => {
                 let extendedSolution;
