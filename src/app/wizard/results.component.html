@@ -1,273 +1,306 @@
 <div id="result-view" class="linkseal-screen">
-    <div class="content-scrollable">
-      <div *ngIf="hasResultSolutions()"
-        id="results-header">
-        <div class="sol-col-1">
-          <h4 [textContent]="translate('YOUR_INPUT')" class="center"></h4>
-        </div>
-        <div class="sol-col-2">
-          <p class="user-input-item">
-            <span [textContent]="translate('WALL_SLEEVE_DRILLING')"></span>
-            :
-          </p>
-        </div>
-        <div class="sol-col-2" style="color: #000;">
-          <p class="wallSleeveInput user-input-item">
+  <div class="content-scrollable">
+    <div *ngIf="hasResultSolutions()"
+         id="results-header">
+      <div class="sol-col-1">
+        <h4 [textContent]="translate('YOUR_INPUT')" class="center"></h4>
+      </div>
+      <div class="sol-col-2">
+        <p class="user-input-item">
+          <span [textContent]="translate('WALL_SLEEVE_DRILLING')"></span>
+          :
+        </p>
+      </div>
+      <div class="sol-col-2" style="color: #000;">
+        <p class="wallSleeveInput user-input-item">
             <span>
               {{ translate(resultForConfiguration.wall_sleeve_type) }}
             </span>
-            <span [textContent]="translate('INNER_DIAMETER')"></span>
-            <br>
-            <span>{{resultForConfiguration.inner_diameter}} mm</span>
-          </p>
-        </div>
-        <div class="sol-col-2">
-          <p class="user-input-item">
-            <span [textContent]="translate('CARRIER_PIPE')"></span>
-            :
-          </p>
-        </div>
-        <div class="sol-col-2" style="color: #000;">
-          <p class="carrierPipeInput user-input-item">
+          <span [textContent]="translate('INNER_DIAMETER')"></span>
+          <br>
+          <span>{{resultForConfiguration.inner_diameter}} mm</span>
+        </p>
+      </div>
+      <div class="sol-col-2">
+        <p class="user-input-item">
+          <span [textContent]="translate('CARRIER_PIPE')"></span>
+          :
+        </p>
+      </div>
+      <div class="sol-col-2" style="color: #000;">
+        <p class="carrierPipeInput user-input-item">
             <span>
               {{ translate(resultForConfiguration.carrier_pipe_type) }}
             </span>
-            <span [textContent]="translate('OUTER_DIAMETER')"></span><br>
-            <span>{{resultForConfiguration.outer_diameter}} mm</span>
-          </p>
-        </div>
-        <div class="sol-col-2">
-          <p class="user-input-item">
-            <span [textContent]="translate('RING_ROOM')"></span>
-            :
-          </p>
-        </div>
-        <div class="sol-col-2">
-          <p class="annularSpaceInput user-input-item">
-            <span>{{resultForConfiguration.clamping_ring}} mm</span>
-          </p>
-          <p class="user-input-item">
-            <span [textContent]="translate('FOR')"></span>
-            {{resultForConfiguration.productLoc}}
-          </p>
-        </div>
+          <span [textContent]="translate('OUTER_DIAMETER')"></span><br>
+          <span>{{resultForConfiguration.outer_diameter}} mm</span>
+        </p>
       </div>
-      <div id="results-list">
-        <div class="sol-col-1">
-          <h5 class="center" [textContent]="translate('RESULTS')"></h5>
-        </div>
-        <div *ngIf="hasResultSets()"
-             class="solution">
-          <div *ngFor="let set of resultForConfiguration.sets">
-
-            <div class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('TYPE')"></span>
-                :
-              </p>
-            </div>
-            <div class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('SET')"></span>
-              </p>
-            </div>
-
-            <div class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('NUMBER')"></span>
-                :
-              </p>
-            </div>
-            <div class="sol-col-2"><p class="result-item">1</p></div>
-
-            <!-- Article Number list for craftsmen sets is context aware -->
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('ARTICLE_NUMBER')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                {{set.artNr}}
-              </p>
-            </div>
-
-            <div *ngIf="isContextRf()" class="sol-col-2 rf-article-number">
-              <p class="result-item">
-                <span [textContent]="translate('ARTICLE_NUMBER_RF_TBU')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextTVG()" class="sol-col-2 tvg-article-number">
-              <p class="result-item">
-                <span [textContent]="translate('ARTICLE_NUMBER_TVG')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
-              <p class="result-item">
-                {{set.rfArtNr}}
-              </p>
-            </div>
-            <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('ARTICLE_NUMBER_PSI')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
-              <p class="result-item">
-                {{set.artNr}}
-              </p>
-            </div>
-
-
-            <div class="sol-col-1 hr-top">&nbsp;</div>
-          </div>
-        </div>
-        <div *ngIf="hasResultSolutions()"
-             class="solution">
-          <div *ngFor="let solution of resultForConfiguration.solutions">
-
-            <div class="sol-col-2">
-              <p class="result-item">
-              <span [textContent]="translate('TYPE')"></span>
-                :
-              </p>
-            </div>
-            <div class="sol-col-2"><p class="result-item">{{solution.type}}</p></div>
-
-            <div class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('NUMBER_LINKS')"></span>
-                :
-              </p>
-            </div>
-            <div class="sol-col-2"><p class="result-item">{{solution.nls}}</p></div>
-
-            <!-- Article Number list for regular articles context aware -->
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('ARTICLE_NUMBER')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                {{solution.artNr}}
-              </p>
-            </div>
-
-            <div *ngIf="isContextRf()" class="sol-col-2 rf-article-number">
-              <p class="result-item">
-                <span [textContent]="translate('ARTICLE_NUMBER_RF_TBU')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextTVG()" class="sol-col-2 tvg-article-number">
-              <p class="result-item">
-                <span [textContent]="translate('ARTICLE_NUMBER_TVG')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
-              <p class="result-item">
-                {{solution.rfArtNr}}
-              </p>
-            </div>
-            <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('ARTICLE_NUMBER_PSI')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
-              <p class="result-item">
-                {{solution.artNr}}
-              </p>
-            </div>
-
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('OUTER_DIAMETER_LINK_SEAL')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item outer-diameter-mm"
-                 [ngClass]="{red: (isInnerDiameterDeviating(solution) && (isContextPSI() || isContextNeutral()))}">
-                {{solution.adls | number:'.1-1'}} mm
-              </p>
-            </div>
-
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item"><span [textContent]='translate("INNER_DIAMETER_LINK_SEAL")'></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item inner-diameter-mm"
-                 [ngClass]="{red: (isOuterDiameterDeviating(solution) && (isContextPSI() || isContextNeutral()))}">
-                {{solution.idls | number:'.1-1'}} mm
-              </p>
-            </div>
-
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]="translate('SEALING_AREA')"></span>
-                :
-              </p>
-            </div>
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                {{solution.ungespannteDicke}} mm -
-                {{solution.gespannteDicke}} mm
-              </p>
-            </div>
-
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                <span [textContent]='translate("RING_TO_TIGHTEN")'></span>
-              </p>
-            </div>
-            <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
-              <p class="result-item">
-                {{solution.lspro}}%
-              </p>
-            </div>
-
-            <div class="sol-col-1 hr-top">&nbsp;</div>
-          </div>
-        </div>
-        <div class="sol-col-1" id="result-notices"
-             *ngIf="(hasResultSolutions() && (isContextPSI() || isContextNeutral()))">
-          <h5 [textContent]="translate('COMMENT')" class="center"></h5>
-          <p [textContent]="translate('NOTICE')" class="centered-text"></p>
-          <p *ngFor="let footnote of resultForConfiguration.notices"
-             [ngClass]="{red: (footnote == 'DEVIATIONS')}" class="centered-text">
-            {{ translate(footnote) }}
-          </p>
-        </div>
+      <div class="sol-col-2">
+        <p class="user-input-item">
+          <span [textContent]="translate('RING_ROOM')"></span>
+          :
+        </p>
       </div>
-
-      <div class="sol-col-1" id="result-error" *ngIf="hasResultErrors()">
-        <h5>
-          {{ translate(resultForConfiguration.error) }}
-        </h5>
+      <div class="sol-col-2">
+        <p class="annularSpaceInput user-input-item">
+          <span>{{resultForConfiguration.clamping_ring}} mm</span>
+        </p>
+        <p class="user-input-item">
+          <span [textContent]="translate('FOR')"></span>
+          {{resultForConfiguration.productLoc}}
+        </p>
       </div>
     </div>
-    <hr class="hr-no-style">
-    <button [textContent]="translate('BUTTON_BACK')"
-            id="back"
-            class="bottom-button"
-            (click)="back()">
-    </button>
-    <button [textContent]="translate('BUTTON_NEW_CONFIGURATION')"
-            id="new-configuration"
-            class="bottom-button"
-            (click)="showConfigurator()">
-    </button>
+    <div id="results-list">
+      <div class="sol-col-1">
+        <h5 class="center" [textContent]="translate('RESULTS')"></h5>
+      </div>
+      <div *ngIf="hasResultSets()"
+           class="solution">
+        <div *ngFor="let set of resultForConfiguration.sets">
+
+          <div class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('TYPE')"></span>
+              :
+            </p>
+          </div>
+          <div class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('SET')"></span>
+            </p>
+          </div>
+
+          <div class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('NUMBER')"></span>
+              :
+            </p>
+          </div>
+          <div class="sol-col-2"><p class="result-item">1</p></div>
+
+          <!-- Article Number list for craftsmen sets is context aware -->
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('ARTICLE_NUMBER')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              {{set.artNr}}
+            </p>
+          </div>
+
+          <div *ngIf="isContextRf()" class="sol-col-2 rf-article-number">
+            <p class="result-item">
+              <span [textContent]="translate('ARTICLE_NUMBER_RF_TBU')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextTVG()" class="sol-col-2 tvg-article-number">
+            <p class="result-item">
+              <span [textContent]="translate('ARTICLE_NUMBER_TVG')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
+            <p class="result-item">
+              {{set.rfArtNr}}
+            </p>
+          </div>
+          <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('ARTICLE_NUMBER_PSI')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
+            <p class="result-item">
+              {{set.artNr}}
+            </p>
+          </div>
+
+
+          <div class="sol-col-1 hr-top">&nbsp;</div>
+        </div>
+      </div>
+      <div *ngIf="hasResultSolutions()"
+           class="solution">
+        <div *ngFor="let solution of resultForConfiguration.solutions">
+
+          <div class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('TYPE')"></span>
+              :
+            </p>
+          </div>
+          <div class="sol-col-2"><p class="result-item">{{solution.type}}</p></div>
+
+          <div class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('NUMBER_LINKS')"></span>
+              :
+            </p>
+          </div>
+          <div class="sol-col-2"><p class="result-item">{{solution.nls}}</p></div>
+
+          <!-- Article Number list for regular articles context aware -->
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('ARTICLE_NUMBER')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              {{solution.artNr}}
+            </p>
+          </div>
+
+          <div *ngIf="isContextRf()" class="sol-col-2 rf-article-number">
+            <p class="result-item">
+              <span [textContent]="translate('ARTICLE_NUMBER_RF_TBU')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextTVG()" class="sol-col-2 tvg-article-number">
+            <p class="result-item">
+              <span [textContent]="translate('ARTICLE_NUMBER_TVG')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
+            <p class="result-item">
+              {{solution.rfArtNr}}
+            </p>
+          </div>
+          <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('ARTICLE_NUMBER_PSI')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextRf() || isContextTVG()" class="sol-col-2">
+            <p class="result-item">
+              {{solution.artNr}}
+            </p>
+          </div>
+
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('OUTER_DIAMETER_LINK_SEAL')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item outer-diameter-mm"
+               [ngClass]="{red: (isInnerDiameterDeviating(solution) && (isContextPSI() || isContextNeutral()))}">
+              {{solution.adls | number:'.1-1'}} mm
+            </p>
+          </div>
+
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item"><span [textContent]='translate("INNER_DIAMETER_LINK_SEAL")'></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item inner-diameter-mm"
+               [ngClass]="{red: (isOuterDiameterDeviating(solution) && (isContextPSI() || isContextNeutral()))}">
+              {{solution.idls | number:'.1-1'}} mm
+            </p>
+          </div>
+
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]="translate('SEALING_AREA')"></span>
+              :
+            </p>
+          </div>
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              {{solution.ungespannteDicke}} mm -
+              {{solution.gespannteDicke}} mm
+            </p>
+          </div>
+
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              <span [textContent]='translate("RING_TO_TIGHTEN")'></span>&nbsp;:
+            </p>
+          </div>
+          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+            <p class="result-item">
+              {{solution.lspro}}%
+            </p>
+          </div>
+
+          <div *ngIf="solution.hasOwnProperty('mmRequiredWallThickness')"
+               class="sol-col-1">
+            <div *ngIf="isContextPSI() || isContextNeutral()"
+                 class="sol-col-2">
+              <p class="result-item">
+                <span [textContent]="translate('REQUIRED_WALL_THICKNESS')"></span>&nbsp;:
+              </p>
+            </div>
+            <div *ngIf="isContextPSI() || isContextNeutral()"
+                 class="sol-col-2">
+              <p class="result-item">
+                {{solution.mmRequiredWallThickness}}&nbsp;mm
+              </p>
+            </div>
+          </div>
+
+          <div *ngIf="solution.hasOwnProperty('mmRecommendedSleeveLength')"
+               class="sol-col-1">
+            <div *ngIf="isContextPSI() || isContextNeutral()"
+                 class="sol-col-2">
+              <p class="result-item">
+                <span [textContent]="translate('RECOMMENDED_SLEEVE_LENGTH')"></span>&nbsp;:
+              </p>
+            </div>
+            <div *ngIf="isContextPSI() || isContextNeutral()"
+                 class="sol-col-2">
+              <p class="result-item">
+                {{ solution.mmRecommendedSleeveLength}}&nbsp;mm
+              </p>
+            </div>
+
+          </div>
+
+          <div class="sol-col-1 hr-top">&nbsp;</div>
+        </div>
+      </div>
+      <div class="sol-col-1" id="result-notices"
+           *ngIf="(hasResultSolutions() && (isContextPSI() || isContextNeutral()))">
+        <h5 [textContent]="translate('COMMENT')" class="center"></h5>
+        <p [textContent]="translate('NOTICE')" class="centered-text"></p>
+        <p *ngFor="let footnote of resultForConfiguration.notices"
+           [ngClass]="{red: (footnote == 'DEVIATIONS')}" class="centered-text">
+          {{ translate(footnote) }}
+        </p>
+      </div>
+    </div>
+
+    <div class="sol-col-1" id="result-error" *ngIf="hasResultErrors()">
+      <h5>
+        {{ translate(resultForConfiguration.error) }}
+      </h5>
+    </div>
   </div>
+  <hr class="hr-no-style">
+  <button [textContent]="translate('BUTTON_BACK')"
+          id="back"
+          class="bottom-button"
+          (click)="back()">
+  </button>
+  <button [textContent]="translate('BUTTON_NEW_CONFIGURATION')"
+          id="new-configuration"
+          class="bottom-button"
+          (click)="showConfigurator()">
+  </button>
+</div>
 
 

@@ -1,5 +1,7 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
+import * as _ from 'lodash';
+
 import {AppEnvironment, LinkSealModel} from '../../assets/model';
 import {i18n} from '../../assets/translate';
 import {LinkSealService} from '../service/linkSeal.service';
@@ -199,6 +201,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.selectedWallSleeveSize = null;
     this.inputWallSleeveSize = '';
   }
+
   applyWallSleeveSizeSelection(): void {
     if (this.linkSealService.configuratorInputs &&
       this.linkSealService
@@ -225,6 +228,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   resetWallSleeveTypeSelection(): void {
     this.selectedWallSleeveTypeIdentifier = 'WALL_SLEEVE_TYPE_OTHER';
   }
+
   applyWallSleeveTypeSelection(): void {
     if (this.linkSealService.configuratorInputs.wallSleeveTypeSelection) {
       this.selectedWallSleeveTypeIdentifier = this.linkSealService
@@ -240,6 +244,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   resetCarrierPipeTypeSelection(): void {
     this.selectedCarrierPipeTypeIdentifier = 'CARRIER_PIPE_TYPE_OTHER';
   }
+
   applyCarrierPipeTypeSelection(): void {
     if (this.linkSealService
       .configuratorInputs
@@ -260,6 +265,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.selectedCarrierPipeSize = null;
     this.inputCarrierPipeSize = '';
   }
+
   applyCarrierPipeSizeSelection(): void {
     if (this.linkSealService
       .configuratorInputs
@@ -286,6 +292,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.materialTypes = [];
     this.selectedMaterialTypeIdentifier = null;
   }
+
   applyMaterialTypeSelection(): void {
     if (this.linkSealService
       .configuratorInputs
@@ -307,6 +314,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   resetProductTypeSelection(): void {
     this.selectedProductTypeIdentifier = null;
   }
+
   applyProductTypeSelection(): void {
     if (this.linkSealService
       .configuratorInputs
@@ -325,6 +333,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.screwTypes = [];
     this.selectedScrewTypeIdentifier = null;
   }
+
   applyScrewTypeSelection(): void {
     if (this.linkSealService
       .configuratorInputs
@@ -594,6 +603,7 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.resetMaterialTypeSelection();
     this.resetScrewTypeSelection();
   }
+
   applyAllSelections(): void {
     this.applyWallSleeveTypeSelection();
     this.applyWallSleeveSizeSelection();
@@ -818,7 +828,14 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
             this.resultForConfiguration = {};
             this.resultForConfiguration.error = 'ERROR_DEFAULT';
           } else {
-            this.resultForConfiguration = {...data};
+            this.resultForConfiguration = {...this.resultForConfiguration,
+              // TODO KR chartType info should be coming from backend
+              solutions: _.map(data.solutions, (solution) => {
+                let extendedSolution;
+                extendedSolution = _.find(LinkSealModel.chartTypes, {type: solution.type});
+                return {...solution, ...extendedSolution};
+              })
+            };
             this.resultForConfigurationChange.emit(this.resultForConfiguration);
             this.addFootnotesToResult();
           }

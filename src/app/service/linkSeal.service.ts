@@ -71,14 +71,15 @@ export class LinkSealService {
         error: null,
         notices: [] // add 'DEVIATIONS' to show coloured deviation text at end
       });
-    }
-    else {
+    } else {
       // TODO KR async http getResults call
     }
   }
+
   get configuratorInputs(): any {
     return this.inputs;
   }
+
   set configuratorInputs(value: any) {
     this.inputs = value;
   }

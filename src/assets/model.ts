@@ -623,6 +623,111 @@ export const LinkSealModel = {
           button: 'stroked'
         }
       ]
+    }],
+  chartTypes: [{
+      type: 200,
+      mmRequiredWallThickness: 75,
+      mmRecommendedSleeveLength: 100
+    },
+    {
+      type: 265,
+      mmRequiredWallThickness: 75,
+      mmRecommendedSleeveLength: 100
+    },
+    {
+      type: 275,
+      mmRequiredWallThickness: 75,
+      mmRecommendedSleeveLength: 100
+    },
+    {
+      type: 300,
+      mmRequiredWallThickness: 100,
+      mmRecommendedSleeveLength: 150
+    },
+    {
+      type: 310,
+      mmRequiredWallThickness: 100,
+      mmRecommendedSleeveLength: 150
+    },
+    {
+      type: 315,
+      mmRequiredWallThickness: 100,
+      mmRecommendedSleeveLength: 150
+    },
+    {
+      type: 325,
+      mmRequiredWallThickness: 120,
+      mmRecommendedSleeveLength: 150
+    },
+    {
+      type: 340,
+      mmRequiredWallThickness: 120,
+      mmRecommendedSleeveLength: 150
+    },
+    {
+      type: 360,
+      mmRequiredWallThickness: 120,
+      mmRecommendedSleeveLength: 150
+    },
+    {
+      type: 400,
+      mmRequiredWallThickness: 140,
+      mmRecommendedSleeveLength: 200
+    },
+    {
+      type: 410,
+      mmRequiredWallThickness: 140,
+      mmRecommendedSleeveLength: 200
+    },
+    {
+      type: 425,
+      mmRequiredWallThickness: 140,
+      mmRecommendedSleeveLength: 200
+    },
+    {
+      type: 440,
+      mmRequiredWallThickness: 140,
+      mmRecommendedSleeveLength: 200
+    },
+    {
+      type: 475,
+      mmRequiredWallThickness: 140,
+      mmRecommendedSleeveLength: 200
+    },
+    {
+      type: 500,
+      mmRequiredWallThickness: 150,
+      mmRecommendedSleeveLength: 200
+    },
+    {
+      type: 525,
+      mmRequiredWallThickness: 150,
+      mmRecommendedSleeveLength: 200
+    },
+    {
+      type: 575,
+      mmRequiredWallThickness: 150,
+      mmRecommendedSleeveLength: 200
+    },
+    {
+      type: 615,
+      mmRequiredWallThickness: 150,
+      mmRecommendedSleeveLength: 250
+    },
+    {
+      type: 625,
+      mmRequiredWallThickness: 150,
+      mmRecommendedSleeveLength: 250
+    },
+    {
+      type: 650,
+      mmRequiredWallThickness: 150,
+      mmRecommendedSleeveLength: 250
+    },
+    {
+      type: 700,
+      mmRequiredWallThickness: 200,
+      mmRecommendedSleeveLength: 250
     }]
 };
 
