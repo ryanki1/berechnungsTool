@@ -247,7 +247,7 @@
             </div>
             <div *ngIf="isContextPSI() || isContextNeutral()"
                  class="sol-col-2">
-              <p class="result-item">
+              <p class="result-item" data-test-mmRequiredWallThickness>
                 {{solution.mmRequiredWallThickness}}&nbsp;mm
               </p>
             </div>
@@ -263,7 +263,7 @@
             </div>
             <div *ngIf="isContextPSI() || isContextNeutral()"
                  class="sol-col-2">
-              <p class="result-item">
+              <p class="result-item" data-test-mmRecommendedSleeveLength>
                 {{ solution.mmRecommendedSleeveLength}}&nbsp;mm
               </p>
             </div>
