@@ -29,7 +29,7 @@ export class LinkSealService {
         clamping_ring: 20,
         productLoc: 'Link-Seal S316',
         context: 'PSI',
-        solutions: [{
+          solutions: [{
           mdls: 183.02818455568,
           adls: 201.02818455568,
           idls: 165.02818455568,

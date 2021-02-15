@@ -219,10 +219,18 @@
               :
             </p>
           </div>
-          <div *ngIf="isContextPSI() || isContextNeutral()" class="sol-col-2">
+          <div *ngIf="isContextPSI() || isContextNeutral()"
+               class="sol-col-2"
+              [ngClass]="{'blue': isLimitOnSealingArea(solution)}">
             <p class="result-item">
               {{solution.ungespannteDicke}} mm -
               {{solution.gespannteDicke}} mm
+            </p>
+          </div>
+
+          <div *ngIf="isLimitOnSealingArea(solution)">
+            <p class="result-item blue">
+              <span [textContent]='translate("WARNING")'></span>
             </p>
           </div>
 

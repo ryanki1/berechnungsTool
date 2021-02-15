@@ -1,8 +1,9 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {Location} from '@angular/common';
 
-import {AppEnvironment} from '../../assets/model';
+import {AppEnvironment, ResultForConfiguration, Solution} from '../../assets/model';
 import {Base} from '../common/base';
+import {Constants} from '../common/constants';
 import {LinkSealService} from '../service/linkSeal.service';
 
 @Component({
@@ -13,11 +14,12 @@ import {LinkSealService} from '../service/linkSeal.service';
 })
 export class ResultsComponent extends Base implements OnInit {
 
-  @Input() set configurationResults(result: any) {
+  @Input() set configurationResults(result: ResultForConfiguration) {
     this.resultForConfiguration = result;
   }
 
   @Output() displayConfigurator: EventEmitter<void> = new EventEmitter<void>();
+  private resultForConfiguration: ResultForConfiguration;
 
   constructor(protected cd: ChangeDetectorRef,
               private location: Location,
@@ -136,6 +138,11 @@ export class ResultsComponent extends Base implements OnInit {
   showConfigurator(): void {
     this.linkSealService.configuratorInputs = null;
     this.displayConfigurator.emit();
+  }
+
+  isLimitOnSealingArea(solution: Solution): boolean {
+    const limit = this.resultForConfiguration.clamping_ring >= solution.gespannteDicke - Constants.SEALING_AREA_LIMIT_BUFFER;
+    return limit;
   }
 
 }

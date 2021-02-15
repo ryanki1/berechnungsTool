@@ -738,4 +738,33 @@ export const AppEnvironment = {
   context: 'neutral'
 };
 
+export interface Solution {
+  mdls: number;
+  adls: number;
+  idls: number;
+  lspro: number;
+  artNr: string;
+  rfArtNr: string;
+  nls: number;
+  gespannteDicke: number;
+  ungespannteDicke: number;
+  type: number;
+  adlsWarningClass: string;
+}
+
+export interface ResultForConfiguration {
+  wall_sleeve_type: string;
+  inner_diameter: number;
+  carrier_pipe_type: string;
+  outer_diameter: number;
+  clamping_ring: number;
+  productLoc: string;
+  context: string;
+  solutions: Solution[];
+  sets: [];
+  // KR added for compilation
+  error: any;
+  notices: string[]; // add 'DEVIATIONS' to show coloured deviation text at end
+}
+
 

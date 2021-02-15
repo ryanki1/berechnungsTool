@@ -83,6 +83,8 @@ export const i18n = {
     LS200LS265: 'Ab einem Rohraußendurchmesser DA 150 mm bei der Typ LS 200/265 empfehlen wir, die Kernbohrung zu vergrößern, um mindestens die Link-Seal® Type LS 310 einsetzen zu können!',
     LS300: 'Ab einem Rohraußendurchmesser DA 300 mm empfehlen wir, die Kernbohrung zu vergrößern, um mindestens die Link-Seal® Type LS 325 einsetzen zu können!',
     DEVIATIONS: 'Wenn der Außendurchmesser der Dichtung größer ist als der Innendurchmesser der Hülse/Kernbohrung oder der Innendurchmesser der Dichtung kleiner ist als der Außendurchmesser der Medienleitung, kann dies zu einer erschwerten Montage führen.',
+    WARNING: 'Der Dichtungsbereich der Dichtung liegt in der Nähe des rechnerischen Ringraums. ' +
+      'Rohraußendurchmesser und Öffnungsinnendurchmesser dürfen keine Toleranzen aufweisen.',
     NOTICE: 'Die technisch beste Lösung bei mehreren "Typ-Alternativen" ist die mit dem am wenigsten zu spannenden Ring (%). Der Aussendurchmesser AD LS-Ring sollte kleiner als der Innendurchmesser ID Schutzrohr / Kernbohrung sein.'
   },
   en: {
@@ -168,6 +170,8 @@ export const i18n = {
     LS300: 'For pipe outer diameters greater than DA 300 mm we suggest to enlarge the core drilling, to be able to use at least Link-Seal® Type LS 325!',
     // DEVIATIONS: 'For values displayed in RED color, please contact our service employees to work out a fitting solution.',
     DEVIATIONS: 'If the outer diameter of the seal is greater than the inner diameter of the sleeve / wall opening or the inner diameter of the seal is smaller than the outer diameter of the media pipe, this can lead to a difficult assembly.',
+    WARNING: 'The sealing area of the seal is close to the calculated annular space. ' +
+      'Pipe OD and hole ID has to be accurate.',
     NOTICE: 'The technically most appropriate solution out of several "type alternatives" is the one with the ring that has to be tightened the least (%). The outer diameter AD LS-Ring should be smaller than the inner diameter of the wall sleeve / core drilling.'
   }
 };
