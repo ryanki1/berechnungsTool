@@ -1,0 +1,8 @@
+{
+  "/api/link-seal": {
+    "target": " http://psi-products.de",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

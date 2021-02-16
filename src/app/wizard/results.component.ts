@@ -19,7 +19,6 @@ export class ResultsComponent extends Base implements OnInit {
   }
 
   @Output() displayConfigurator: EventEmitter<void> = new EventEmitter<void>();
-  private resultForConfiguration: ResultForConfiguration;
 
   constructor(protected cd: ChangeDetectorRef,
               private location: Location,

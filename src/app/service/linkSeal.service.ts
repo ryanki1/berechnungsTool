@@ -1,3 +1,4 @@
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 import {Observable, of} from 'rxjs';
@@ -10,6 +11,9 @@ import {Constants} from '../common/constants';
 export class LinkSealService {
 
   private inputs: any;
+
+  constructor(private http: HttpClient) {
+  }
 
   getResults(context: string,
              wallSleeveTypeIdentifier: string,
@@ -73,6 +77,12 @@ export class LinkSealService {
       });
     } else {
       // TODO KR async http getResults call
+      const url = '/api/link-seal/?action=solution&context=' + context
+        + '&wallSleeveType=' + wallSleeveTypeIdentifier + '&wallSleeveSize=' + wallSleeveSize
+        + '&carrierPipeType=' + carrierPipeTypeIdentifier + '&carrierPipeSize=' + carrierPipeSize
+        + '&productType=' + productTypeIdentifier + '&materialType=' + materialTypeIdentifier
+        + '&screwType=' + screwTypeIdentifier;
+      return this.http.get(url, {responseType: 'json'});
     }
   }
 

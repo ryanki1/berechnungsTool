@@ -1,5 +1,5 @@
 export const Constants = {
-  MOCK_MODE: true,
+  MOCK_MODE: false,
   SEALING_AREA_LIMIT_BUFFER: 2
 };
 

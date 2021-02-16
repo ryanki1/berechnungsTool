@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 
 import {ResultsComponent} from './results.component';
+import {HttpClient} from '@angular/common/http';
 
 describe('ResultsComponent', () => {
   let component: ResultsComponent;
@@ -10,7 +11,13 @@ describe('ResultsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ResultsComponent]
+      declarations: [ResultsComponent],
+      providers: [
+        {
+          provide: HttpClient,
+          useFactory: () => {}
+        }
+      ]
     })
       .compileComponents();
     fixture = TestBed.createComponent(ResultsComponent);
@@ -104,6 +111,17 @@ describe('ResultsComponent', () => {
     it('"Recommended Sleeve Length" displayed', () => {
       component.resultForConfiguration.solutions[0].mmRecommendedSleeveLength = 150;
       expectInfoExtensionsTruthy('mmRecommendedSleeveLength');
+    });
+  });
+  describe('End of sealing range', () => {
+    it ('not triggered', () => {
+      fixture.detectChanges();
+      expect(fixture.debugElement.queryAll(By.css('.blue')).length).toBeFalsy();
+    });
+    it ('triggered', () => {
+      component.resultForConfiguration.solutions[0].gespannteDicke = 20;
+      fixture.detectChanges();
+      expect(fixture.debugElement.queryAll(By.css('.blue')).length).toBe(2);
     });
   });
 

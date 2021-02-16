@@ -1,14 +1,14 @@
 import * as _ from 'lodash';
 
 import {i18n} from '../../assets/translate';
-import {AppEnvironment} from '../../assets/model';
+import {AppEnvironment, ResultForConfiguration} from '../../assets/model';
 
 export class Base {
   /**
    * the Result - to be provided by the LinkSealService.
    * @type {Array}
    */
-  resultForConfiguration = null;
+  resultForConfiguration: ResultForConfiguration = null;
   configuratorViewVisible = true;
   resultViewVisible = false;
   infoViewVisible = false;

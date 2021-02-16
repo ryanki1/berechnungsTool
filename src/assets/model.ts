@@ -750,6 +750,8 @@ export interface Solution {
   ungespannteDicke: number;
   type: number;
   adlsWarningClass: string;
+  mmRequiredWallThickness: number;
+  mmRecommendedSleeveLength: number;
 }
 
 export interface ResultForConfiguration {
