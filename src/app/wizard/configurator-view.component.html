@@ -1,6 +1,6 @@
-<div id="configurator-view"
-     class="linkseal-screen"
-     (submit)="calculate()">
+<form id="configurator-view"
+      class="linkseal-screen"
+      (ngSubmit)="calculate()">
   <div class="content-scrollable" delegate-handle="small">
 
     <!--------------------------->
@@ -102,7 +102,7 @@
     <!-- PRODUCT / MATERIAL / SCREW TYPE Selection for WEBSITE & APP using ButtonConfigurator -->
     <!---------------------------------------------->
     <app-button-configurator *ngIf="isContextPSI() || isContextNeutral()"
-      (selectionMade)="selectionMade($event)">
+                             (selectionMade)="selectionMade($event)">
     </app-button-configurator>
 
     <!---------------------------------------------->
@@ -164,9 +164,8 @@
             class="bottom-button"
             tabindex=3
             type="submit"
-            [disabled]="isCalculateButtonDisabled()"
-            (click)="calculate()">
+            [disabled]="isCalculateButtonDisabled()">
       {{ translate('BUTTON_CHECK_INPUT') }}
     </button>
   </div>
-</div>
+</form>

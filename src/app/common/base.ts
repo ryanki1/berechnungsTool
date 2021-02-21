@@ -1,7 +1,8 @@
 import * as _ from 'lodash';
 
-import {i18n} from '../../assets/translate';
 import {AppEnvironment, ResultForConfiguration} from '../../assets/model';
+import {Constants} from './constants';
+import {i18n} from '../../assets/translate';
 
 export class Base {
   /**
@@ -56,6 +57,33 @@ export class Base {
     this.configuratorViewVisible = false;
     this.resultViewVisible = false;
     this.infoViewVisible = true;
+  }
+
+  /**
+   * Checks whether the inner diameter of a given solution is deviating from the inner diameter chosen by the user.
+   * @param solution
+   * @returns {boolean}
+   */
+  isInnerDiameterDeviating(solution): boolean { // 2020-07-02 changes no. 6.
+    return (solution.adls > this.resultForConfiguration.inner_diameter + Constants.OUTER_TOLERANCE);
+  }
+
+  /**
+   * Checks whether the outer diameter of a given solution is deviating from the outer diameter chosen by the user.
+   * @param solution
+   * @returns {boolean}
+   */
+  isOuterDiameterDeviating(solution): boolean { // 2020-07-02 changes no. 6
+    return (solution.idls < this.resultForConfiguration.outer_diameter + Constants.INNER_TOLERANCE);
+  }
+
+  /**
+   * Checks whether one of the diameters of a given solution is deviating from the diameters chosen by the user.
+   * @param solution
+   * @returns {boolean}
+   */
+  isDiameterDeviating(solution): boolean {
+    return (this.isInnerDiameterDeviating(solution) || this.isOuterDiameterDeviating(solution));
   }
 
   /**

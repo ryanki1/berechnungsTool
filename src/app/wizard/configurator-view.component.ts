@@ -414,33 +414,6 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   }
 
   /**
-   * Checks whether one of the diameters of a given solution is deviating from the diameters chosen by the user.
-   * @param solution
-   * @returns {boolean}
-   */
-  isDiameterDeviating(solution): boolean {
-    return (this.isInnerDiameterDeviating(solution) || this.isOuterDiameterDeviating(solution));
-  }
-
-  /**
-   * Checks whether the inner diameter of a given solution is deviating from the inner diameter chosen by the user.
-   * @param solution
-   * @returns {boolean}
-   */
-  isInnerDiameterDeviating(solution) {
-    return (solution.adls > this.resultForConfiguration.inner_diameter);
-  }
-
-  /**
-   * Checks whether the outer diameter of a given solution is deviating from the outer diameter chosen by the user.
-   * @param solution
-   * @returns {boolean}
-   */
-  isOuterDiameterDeviating(solution): boolean {
-    return (solution.idls < this.resultForConfiguration.outer_diameter);
-  }
-
-  /**
    * Checks whether the app context is PSI
    * @returns {boolean}
    */
@@ -836,9 +809,9 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
                 return {...solution, ...extendedSolution};
               })
             };
-            this.resultForConfigurationChange.emit(this.resultForConfiguration);
             this.addFootnotesToResult();
           }
+          this.resultForConfigurationChange.emit(this.resultForConfiguration);
           this.displayResult.emit();
         }, (error) => {
           console.log('failed loading result for configuration');

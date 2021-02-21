@@ -63,24 +63,6 @@ export class ResultsComponent extends Base implements OnInit {
   }
 
   /**
-   * Checks whether the inner diameter of a given solution is deviating from the inner diameter chosen by the user.
-   * @param solution
-   * @returns {boolean}
-   */
-  isInnerDiameterDeviating(solution): boolean { // 2020-07-02 changes no. 6.
-    return (solution.adls > this.resultForConfiguration.inner_diameter + 1.5);
-  }
-
-  /**
-   * Checks whether the outer diameter of a given solution is deviating from the outer diameter chosen by the user.
-   * @param solution
-   * @returns {boolean}
-   */
-  isOuterDiameterDeviating(solution): boolean { // 2020-07-02 changes no. 6
-    return (solution.idls < this.resultForConfiguration.outer_diameter - 2);
-  }
-
-  /**
    * Tells whether the calculated configuration has solutions.
    * @returns {boolean}
    */
