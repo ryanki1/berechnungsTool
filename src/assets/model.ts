@@ -600,11 +600,11 @@ export const LinkSealModel = {
       screwTypes: [
         {
           identifier: 'SCREW_STAINLESS_STEEL',
-          button: 'stroked'
+          button: 'flat'
         },
         {
           identifier: 'SCREW_ZINC_PLATED',
-          button: 'flat'
+          button: 'stroked'
         }
       ]
     },

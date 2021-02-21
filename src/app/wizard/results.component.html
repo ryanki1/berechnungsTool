@@ -58,8 +58,8 @@
       </div>
       <div *ngIf="hasResultSets()"
            class="solution">
-        <div *ngFor="let set of resultForConfiguration.sets">
-
+        <div *ngFor="let set of resultForConfiguration.sets"
+             class="sol-col-1">
           <div class="sol-col-2">
             <p class="result-item">
               <span [textContent]="translate('TYPE')"></span>
@@ -128,7 +128,8 @@
       </div>
       <div *ngIf="hasResultSolutions()"
            class="solution">
-        <div *ngFor="let solution of resultForConfiguration.solutions">
+        <div *ngFor="let solution of resultForConfiguration.solutions"
+             class="sol-col-1">
 
           <div class="sol-col-2">
             <p class="result-item">
@@ -221,7 +222,7 @@
           </div>
           <div *ngIf="isContextPSI() || isContextNeutral()"
                class="sol-col-2"
-              [ngClass]="{'blue': isLimitOnSealingArea(solution)}">
+               [ngClass]="{'blue': isLimitOnSealingArea(solution)}">
             <p class="result-item">
               {{solution.ungespannteDicke}} mm -
               {{solution.gespannteDicke}} mm

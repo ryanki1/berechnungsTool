@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 import * as _ from 'lodash';
 
@@ -17,6 +17,8 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
   @Output() resultForConfigurationChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() displayInfo: EventEmitter<void> = new EventEmitter<void>();
   @Output() displayResult: EventEmitter<void> = new EventEmitter<void>();
+
+  @ViewChild('submit') submit: ElementRef;
 
   /**
    * ----------------------------------------------
@@ -750,6 +752,8 @@ export class ConfiguratorViewComponent extends Base implements OnInit {
     this.selectedProductTypeIdentifier = selections.productType;
     this.selectedMaterialTypeIdentifier = selections.materialType;
     this.selectedScrewTypeIdentifier = selections.screwType;
+    this.cd.detectChanges();
+    this.submit.nativeElement.focus();
   }
 
   /**
