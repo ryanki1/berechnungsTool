@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Base} from './common/base';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-ls-tool',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

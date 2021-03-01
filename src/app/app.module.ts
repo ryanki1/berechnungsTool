@@ -1,8 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
+import {createCustomElement} from '@angular/elements';
 import {FormsModule} from '@angular/forms';
+import {Injector, NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
-import {NgModule} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppComponent} from './app.component';
@@ -26,8 +27,16 @@ import {ResultsComponent} from './wizard/results.component';
     MatButtonModule,
     HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [
+    AppComponent
+  ],
+  providers: []
 })
 export class AppModule {
+  constructor(private injector: Injector) {
+  }
+  ngDoBootstrap() {
+    const lsTool = createCustomElement(AppComponent, {injector: this.injector});
+    customElements.define('app-ls-tool', lsTool);
+  }
 }

@@ -14,6 +14,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+Run `npm run build-tool` to compress the build artifacts into 1 file 'ls-berechnungs-tool.js' for <app-ls-tool> custom element and store it in src/assets for access from index.html.
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
